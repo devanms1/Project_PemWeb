@@ -44,18 +44,18 @@
         >
           <ul class="navbar-nav gap-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html"
+              <a class="nav-link active" aria-current="page" href="home.php"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tayang.html">Sedang Tayang</a>
+              <a class="nav-link" href="tayang.php">Sedang Tayang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="populer.html">Popular</a>
+              <a class="nav-link" href="populer.php">Popular</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="marchandise.html">Merchandise</a>
+              <a class="nav-link" href="marchandise.php">Merchandise</a>
             </li>
           </ul>
         </div>
