@@ -73,9 +73,9 @@ include '../koneksi.php';
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav gap-3">
         <li class="nav-item"><a class="nav-link" href="HalamanTambah.php">🎬 Tambah Film</a></li>
-        <li class="nav-item"><a class="nav-link" href="daftar_user.php">👥 Tambah Snack</a></li>
+        <li class="nav-item"><a class="nav-link" href="drink_admin.php">👥 Tambah Snack</a></li>
         <li class="nav-item"><a class="nav-link" href="daftar_pesanan.php">🧾 Pantau User</a></li>
-        <li class="nav-item"><a class="nav-link text-danger" href="../logout.php">🚪 Logout</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="../login.php">🚪 Logout</a></li>
       </ul>
     </div>
   </div>
