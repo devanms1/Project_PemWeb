@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Drink Order</title>
+  <title>Sewa Bantal</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,26 +14,26 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
     }
-    .drink-card {
+    .bantal-card {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       background: white;
       transition: 0.3s ease-in-out;
     }
-    .drink-card:hover {
+    .bantal-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
-    .drink-img {
+    .bantal-img {
       height: 180px;
       object-fit: cover;
     }
-    .drink-title {
+    .bantal-title {
       font-size: 1.1em;
       font-weight: 600;
     }
-    .drink-price {
+    .bantal-price {
       font-weight: bold;
       color: #ff5722;
     }
@@ -61,10 +61,10 @@
 
 <!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Minuman Favorit Kamu 🍹</h2>
+  <h2 class="fw-bold mb-4">Sewa Bantal Nyaman Untuk Nonton 🎥🛏️</h2>
 </div>
 
-<!-- Drink Cards -->
+<!-- Bantal Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
@@ -76,18 +76,18 @@
       die("Koneksi gagal: " . $koneksi->connect_error);
     }
 
-    // Ambil data dari tabel products dengan kategori 'drink'
-    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'drink' ORDER BY id_product DESC");
+    // Ambil data dari tabel products dengan kategori 'sewabantal'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewabantal' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
-    while ($drink = $result->fetch_assoc()) {
+    while ($sewabantal = $result->fetch_assoc()) {
       echo '
       <div class="col">
-        <div class="card drink-card text-center p-2">
-          <img src="'.$drink["gambar"].'" class="card-img-top drink-img" alt="'.$drink["nama_produk"].'" />
+        <div class="card sewabantal-card text-center p-2">
+          <img src="'.$sewabantal["gambar"].'" class="card-img-top sewabantal-img" alt="'.$sewabantal["nama_produk"].'" />
           <div class="card-body">
-            <p class="drink-title">'.$drink["nama_produk"].'</p>
-            <p class="drink-price">Rp '.number_format($drink["harga"], 0, ',', '.').'</p>
+            <p class="sewabantal-title">'.$sewabantal["nama_produk"].'</p>
+            <p class="sewabantal-price">Rp '.number_format($sewabantal["harga"], 0, ',', '.').'</p>
             <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
         </div>
@@ -117,7 +117,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin menemukan film favorit tanpa ribet — cukup satu klik, dan seluruh pilihan tayangan terbaik langsung tersedia di genggamanmu.
+      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin nonton nyaman — cukup pilih bantalnya, dan nikmati film dengan posisi ternyamanmu.
     </p>
   </div>
 </footer>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Drink Order</title>
+  <title>Sewa Selimut</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,26 +14,26 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
     }
-    .drink-card {
+    .sewaselimut-card {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       background: white;
       transition: 0.3s ease-in-out;
     }
-    .drink-card:hover {
+    .sewaselimut-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
-    .drink-img {
+    .sewaselimut-img {
       height: 180px;
       object-fit: cover;
     }
-    .drink-title {
+    .sewaselimut-title {
       font-size: 1.1em;
       font-weight: 600;
     }
-    .drink-price {
+    .sewaselimut-price {
       font-weight: bold;
       color: #ff5722;
     }
@@ -61,10 +61,10 @@
 
 <!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Minuman Favorit Kamu 🍹</h2>
+  <h2 class="fw-bold mb-4">Sewa Selimut Biar Nonton Makin Cozy 😴🎬</h2>
 </div>
 
-<!-- Drink Cards -->
+<!-- Sewaselimut Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
@@ -76,18 +76,18 @@
       die("Koneksi gagal: " . $koneksi->connect_error);
     }
 
-    // Ambil data dari tabel products dengan kategori 'drink'
-    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'drink' ORDER BY id_product DESC");
+    // Ambil data dari tabel products dengan kategori 'sewaselimut'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewaselimut' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
-    while ($drink = $result->fetch_assoc()) {
+    while ($sewaselimut = $result->fetch_assoc()) {
       echo '
       <div class="col">
-        <div class="card drink-card text-center p-2">
-          <img src="'.$drink["gambar"].'" class="card-img-top drink-img" alt="'.$drink["nama_produk"].'" />
+        <div class="card sewaselimut-card text-center p-2">
+          <img src="'.$sewaselimut["gambar"].'" class="card-img-top sewaselimut-img" alt="'.$sewaselimut["nama_produk"].'" />
           <div class="card-body">
-            <p class="drink-title">'.$drink["nama_produk"].'</p>
-            <p class="drink-price">Rp '.number_format($drink["harga"], 0, ',', '.').'</p>
+            <p class="sewaselimut-title">'.$sewaselimut["nama_produk"].'</p>
+            <p class="sewaselimut-price">Rp '.number_format($sewaselimut["harga"], 0, ',', '.').'</p>
             <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
         </div>
@@ -117,7 +117,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin menemukan film favorit tanpa ribet — cukup satu klik, dan seluruh pilihan tayangan terbaik langsung tersedia di genggamanmu.
+      Nonton Skuy hadir dengan layanan selimut cozy buat kamu yang gak mau kedinginan pas nonton. Cukup pilih, pesan, dan peluk!
     </p>
   </div>
 </footer>

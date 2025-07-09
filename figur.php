@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Figur Order</title>
+  <title>Pesan Figur</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -64,38 +64,41 @@
   <h2 class="fw-bold mb-4">Pilih Figur Favorit Kamu 🧸</h2>
 </div>
 
-<!-- Figur Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data figur (bisa diganti dari database)
-      $figurs = [
-        ["name" => "Figur Naruto", "price" => 75000, "img" => "./Assets/figur_naruto.jpg"],
-        ["name" => "Figur One Piece", "price" => 85000, "img" => "./Assets/figur_onepiece.jpg"],
-        ["name" => "Figur Goku", "price" => 95000, "img" => "./Assets/figur_goku.jpg"],
-        ["name" => "Figur Spiderman", "price" => 90000, "img" => "./Assets/figur_spiderman.jpg"],
-        ["name" => "Figur Batman", "price" => 100000, "img" => "./Assets/figur_batman.jpg"],
-        ["name" => "Figur Iron Man", "price" => 120000, "img" => "./Assets/figur_ironman.jpg"],
-        ["name" => "Figur Luffy", "price" => 95000, "img" => "./Assets/figur_luffy.jpg"],
-        ["name" => "Figur Deadpool", "price" => 110000, "img" => "./Assets/figur_deadpool.jpg"]
-      ];
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
-      foreach ($figurs as $figur) {
-        echo '
-        <div class="col">
-          <div class="card figur-card text-center p-2">
-            <img src="'.$figur["img"].'" class="card-img-top figur-img" alt="'.$figur["name"].'" />
-            <div class="card-body">
-              <p class="figur-title">'.$figur["name"].'</p>
-              <p class="figur-price">Rp '.number_format($figur["price"], 0, ',', '.').'</p>
-              <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data dari tabel products dengan kategori 'figur'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'figur' ORDER BY id_product DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($figur = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card figur-card text-center p-2">
+          <img src="'.$figur["gambar"].'" class="card-img-top figur-img" alt="'.$figur["nama_produk"].'" />
+          <div class="card-body">
+            <p class="figur-title">'.$figur["nama_produk"].'</p>
+            <p class="figur-price">Rp '.number_format($figur["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="footer text-white py-4 shadow" style="background-color: yellow; color: black; margin-top: 5em;">
@@ -114,7 +117,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin menemukan film favorit tanpa ribet — cukup satu klik, dan seluruh pilihan tayangan terbaik langsung tersedia di genggamanmu.
+      Koleksi figurin kece buat nambah vibes nonton dan koleksimu! Langsung pilih dan pesan 🧸✨
     </p>
   </div>
 </footer>

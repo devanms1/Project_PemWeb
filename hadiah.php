@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hadiah Order</title>
+  <title>Pesan Hadiah</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -61,38 +61,41 @@
 
 <!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Pilih Hadiah Favorit Kamu 🎁</h2>
+  <h2 class="fw-bold mb-4">Pilih Hadiah Spesial 🎁</h2>
 </div>
 
 <!-- Hadiah Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data hadiah (bisa diganti dari database)
-      $hadiahs = [
-        ["name" => "Tumbler Keren", "price" => 25000, "img" => "./Assets/hadiah_tumbler.jpg"],
-        ["name" => "Poster Film", "price" => 10000, "img" => "./Assets/hadiah_poster.jpg"],
-        ["name" => "Gantungan Kunci", "price" => 5000, "img" => "./Assets/hadiah_gantungan.jpg"],
-        ["name" => "Kaos Nonton Skuy", "price" => 40000, "img" => "./Assets/hadiah_kaos.jpg"],
-        ["name" => "Notebook Eksklusif", "price" => 30000, "img" => "./Assets/hadiah_notebook.jpg"],
-        ["name" => "Pin Karakter", "price" => 7000, "img" => "./Assets/hadiah_pin.jpg"],
-        ["name" => "Topi Film", "price" => 20000, "img" => "./Assets/hadiah_topi.jpg"],
-        ["name" => "Stiker Lucu", "price" => 3000, "img" => "./Assets/hadiah_stiker.jpg"]
-      ];
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
-      foreach ($hadiahs as $hadiah) {
-        echo '
-        <div class="col">
-          <div class="card hadiah-card text-center p-2">
-            <img src="'.$hadiah["img"].'" class="card-img-top hadiah-img" alt="'.$hadiah["name"].'" />
-            <div class="card-body">
-              <p class="hadiah-title">'.$hadiah["name"].'</p>
-              <p class="hadiah-price">Rp '.number_format($hadiah["price"], 0, ',', '.').'</p>
-              <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data dari tabel products dengan kategori 'hadiah'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'hadiah' ORDER BY id_product DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($hadiah = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card hadiah-card text-center p-2">
+          <img src="'.$hadiah["gambar"].'" class="card-img-top hadiah-img" alt="'.$hadiah["nama_produk"].'" />
+          <div class="card-body">
+            <p class="hadiah-title">'.$hadiah["nama_produk"].'</p>
+            <p class="hadiah-price">Rp '.number_format($hadiah["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>
@@ -114,7 +117,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin menemukan film favorit tanpa ribet — cukup satu klik, dan seluruh pilihan tayangan terbaik langsung tersedia di genggamanmu.
+      Nonton Skuy siap manjain kamu dengan hadiah spesial buat setiap momen seru di bioskop 🎬✨
     </p>
   </div>
 </footer>
