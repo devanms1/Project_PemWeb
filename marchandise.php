@@ -44,18 +44,18 @@
         >
           <ul class="navbar-nav gap-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home.html"
+              <a class="nav-link active" aria-current="page" href="home.php"
                 >Home</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tayang.html">Sedang Tayang</a>
+              <a class="nav-link" href="tayang.php">Sedang Tayang</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="populer.html">Popular</a>
+              <a class="nav-link" href="populer.php">Popular</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="marchandise.html">Merchandise</a>
+              <a class="nav-link" href="marchandise.php">Merchandise</a>
             </li>
           </ul>
         </div>
@@ -73,7 +73,7 @@
     <!-- Cpontent -->
     <div class="row row-cols-1 row-cols-md-4 g-4 d-flex row-space-around">
       <div class="col">
-        <a href="">
+        <a href="drink.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Drink</div>
             <img src="./Assets/Drink.jpg" class="card-img-top" alt="Minuman" />
@@ -81,7 +81,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="snack.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Snack</div>
             <img src="./Assets/Snack.jpg" class="card-img-top" alt="Snack" />
@@ -89,7 +89,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="keychan.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Keychan</div>
             <img
@@ -101,7 +101,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="poster_film.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Poster Film</div>
             <img
@@ -113,7 +113,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="hadiah.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Hadiah</div>
             <img src="./Assets/kadp.jpg" class="card-img-top" alt="Kado" />
@@ -121,7 +121,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="figur.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Figure</div>
             <img src="./Assets/Figure.jpeg" class="card-img-top" alt="Figure" />
