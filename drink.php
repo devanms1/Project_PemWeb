@@ -68,31 +68,34 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data minuman (bisa diganti dari database)
-      $drinks = [
-        ["name" => "Es Teh Manis", "price" => 8000, "img" => "./Assets/drink_esteh.jpg"],
-        ["name" => "Kopi Susu", "price" => 12000, "img" => "./Assets/drink_kopisusu.jpg"],
-        ["name" => "Matcha Latte", "price" => 15000, "img" => "./Assets/drink_matcha.jpg"],
-        ["name" => "Lemon Tea", "price" => 10000, "img" => "./Assets/drink_lemontea.jpg"],
-        ["name" => "Cappuccino", "price" => 14000, "img" => "./Assets/drink_cappuccino.jpg"],
-        ["name" => "Air Mineral", "price" => 5000, "img" => "./Assets/drink_airmineral.jpg"],
-        ["name" => "Jus Alpukat", "price" => 13000, "img" => "./Assets/drink_alpukat.jpg"],
-        ["name" => "Milkshake Coklat", "price" => 15000, "img" => "./Assets/drink_milkshake.jpg"]
-      ];
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
 
-      foreach ($drinks as $drink) {
-        echo '
-        <div class="col">
-          <div class="card drink-card text-center p-2">
-            <img src="'.$drink["img"].'" class="card-img-top drink-img" alt="'.$drink["name"].'" />
-            <div class="card-body">
-              <p class="drink-title">'.$drink["name"].'</p>
-              <p class="drink-price">Rp '.number_format($drink["price"], 0, ',', '.').'</p>
-              <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data minuman dari database
+    $result = $koneksi->query("SELECT * FROM drinks ORDER BY id DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($drink = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card drink-card text-center p-2">
+          <img src="'.$drink["image"].'" class="card-img-top drink-img" alt="'.$drink["name"].'" />
+          <div class="card-body">
+            <p class="drink-title">'.$drink["name"].'</p>
+            <p class="drink-price">Rp '.number_format($drink["price"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>
