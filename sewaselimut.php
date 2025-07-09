@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pesan Figur</title>
+  <title>Sewa Selimut</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,26 +14,26 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
     }
-    .figur-card {
+    .sewaselimut-card {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       background: white;
       transition: 0.3s ease-in-out;
     }
-    .figur-card:hover {
+    .sewaselimut-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
-    .figur-img {
+    .sewaselimut-img {
       height: 180px;
       object-fit: cover;
     }
-    .figur-title {
+    .sewaselimut-title {
       font-size: 1.1em;
       font-weight: 600;
     }
-    .figur-price {
+    .sewaselimut-price {
       font-weight: bold;
       color: #ff5722;
     }
@@ -61,27 +61,38 @@
 
 <!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Pilih Figur Favorit Kamu 🧸</h2>
+  <h2 class="fw-bold mb-4">Sewa Selimut Biar Nonton Makin Cozy 😴🎬</h2>
 </div>
 
-<!-- Figur Cards -->
+<!-- Sewaselimut Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
+      // Simulasi data selimut (bisa dari database)
+      $sewaselimuts = [
+        ["name" => "Selimut Polos", "price" => 15000, "img" => "./Assets/selimut_polos.jpg"],
+        ["name" => "Selimut Karakter", "price" => 18000, "img" => "./Assets/selimut_karakter.jpg"],
+        ["name" => "Selimut Tebal", "price" => 20000, "img" => "./Assets/selimut_tebal.jpg"],
+        ["name" => "Selimut Premium", "price" => 25000, "img" => "./Assets/selimut_premium.jpg"],
+        ["name" => "Selimut Couple", "price" => 30000, "img" => "./Assets/selimut_couple.jpg"],
+        ["name" => "Selimut Bayi", "price" => 10000, "img" => "./Assets/selimut_bayi.jpg"],
+        ["name" => "Selimut Travel", "price" => 16000, "img" => "./Assets/selimut_travel.jpg"],
+        ["name" => "Selimut Anti Dinginnya Mantan", "price" => 22000, "img" => "./Assets/selimut_anti_dingin.jpg"]
+      ];
 
-      foreach ($figurs as $figur) {
+      foreach ($sewaselimuts as $selimut) {
         echo '
         <div class="col">
-          <div class="card figur-card text-center p-2">
-            <img src="'.$figur["img"].'" class="card-img-top figur-img" alt="'.$figur["name"].'" />
+          <div class="card sewaselimut-card text-center p-2">
+            <img src="'.$selimut["img"].'" class="card-img-top sewaselimut-img" alt="'.$selimut["name"].'" />
             <div class="card-body">
-              <p class="figur-title">'.$figur["name"].'</p>
-              <p class="figur-price">Rp '.number_format($figur["price"], 0, ',', '.').'</p>
+              <p class="sewaselimut-title">'.$selimut["name"].'</p>
+              <p class="sewaselimut-price">Rp '.number_format($selimut["price"], 0, ',', '.').'</p>
               
               <!-- Form Admin Order -->
-              <form action="pesan_figur.php" method="POST">
-                <input type="hidden" name="figur_name" value="'.$figur["name"].'">
-                <input type="hidden" name="figur_price" value="'.$figur["price"].'">
+              <form action="pesan_selimut.php" method="POST">
+                <input type="hidden" name="selimut_name" value="'.$selimut["name"].'">
+                <input type="hidden" name="selimut_price" value="'.$selimut["price"].'">
                 <div class="mb-2">
                   <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
                 </div>
@@ -112,7 +123,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Koleksi figurin kece buat nambah vibes nonton dan koleksimu! Langsung pilih dan pesan 🧸✨
+      Nonton Skuy hadir dengan layanan selimut cozy buat kamu yang gak mau kedinginan pas nonton. Cukup pilih, pesan, dan peluk!
     </p>
   </div>
 </footer>

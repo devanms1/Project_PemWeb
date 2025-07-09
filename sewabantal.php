@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pesan Figur</title>
+  <title>Sewa Bantal</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -14,26 +14,26 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
     }
-    .figur-card {
+    .bantal-card {
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       background: white;
       transition: 0.3s ease-in-out;
     }
-    .figur-card:hover {
+    .bantal-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
-    .figur-img {
+    .bantal-img {
       height: 180px;
       object-fit: cover;
     }
-    .figur-title {
+    .bantal-title {
       font-size: 1.1em;
       font-weight: 600;
     }
-    .figur-price {
+    .bantal-price {
       font-weight: bold;
       color: #ff5722;
     }
@@ -61,36 +61,51 @@
 
 <!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Pilih Figur Favorit Kamu 🧸</h2>
+  <h2 class="fw-bold mb-4">Sewa Bantal Nyaman Untuk Nonton 🎥🛏️</h2>
 </div>
 
-<!-- Figur Cards -->
+<!-- Bantal Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
 
-      foreach ($figurs as $figur) {
-        echo '
-        <div class="col">
-          <div class="card figur-card text-center p-2">
-            <img src="'.$figur["img"].'" class="card-img-top figur-img" alt="'.$figur["name"].'" />
-            <div class="card-body">
-              <p class="figur-title">'.$figur["name"].'</p>
-              <p class="figur-price">Rp '.number_format($figur["price"], 0, ',', '.').'</p>
-              
-              <!-- Form Admin Order -->
-              <form action="pesan_figur.php" method="POST">
-                <input type="hidden" name="figur_name" value="'.$figur["name"].'">
-                <input type="hidden" name="figur_price" value="'.$figur["price"].'">
-                <div class="mb-2">
-                  <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
-                </div>
-                <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
-              </form>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data bantal dari database
+    $result = $koneksi->query("SELECT * FROM bantal ORDER BY id DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($bantal = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card bantal-card text-center p-2">
+          <img src="'.$bantal["image"].'" class="card-img-top bantal-img" alt="'.$bantal["name"].'" />
+          <div class="card-body">
+            <p class="bantal-title">'.$bantal["name"].'</p>
+            <p class="bantal-price">Rp '.number_format($bantal["price"], 0, ',', '.').'</p>
+            
+            <!-- Form Pesan Admin -->
+            <form action="pesan_bantal.php" method="POST">
+              <input type="hidden" name="bantal_name" value="'.$bantal["name"].'">
+              <input type="hidden" name="bantal_price" value="'.$bantal["price"].'">
+              <div class="mb-2">
+                <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
+              </div>
+              <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
+            </form>
+
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>
@@ -112,7 +127,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Koleksi figurin kece buat nambah vibes nonton dan koleksimu! Langsung pilih dan pesan 🧸✨
+      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin nonton nyaman — cukup pilih bantalnya, dan nikmati film dengan posisi ternyamanmu.
     </p>
   </div>
 </footer>
