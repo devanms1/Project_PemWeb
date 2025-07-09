@@ -1,6 +1,6 @@
 <?php
 // Koneksi database
-$koneksi = new mysqli("localhost", "root", "", "db_website");
+$koneksi = new mysqli("localhost", "root", "", "db_bioskop");
 
 // Cek koneksi
 if ($koneksi->connect_error) {

@@ -5,8 +5,8 @@ if ($koneksi->connect_error) {
     die("Koneksi gagal: " . $koneksi->connect_error);
 }
 
-$judul = $_POST['nama_film'];
-$kategori  = $_POST['genre'];
+$judul = $_POST['judul'];
+$kategori  = $_POST['kategori'];
 $sinopsis  = $_POST['sinopsis'];
 $rilis     = date("Y-m-d");
 
@@ -23,6 +23,8 @@ $folder      = "uploads/";
 if (!is_dir($folder)) {
     mkdir($folder, 0777, true);
 }
+
+$poster_nama = time() . '_' . preg_replace('/\s+/', '_', $_FILES['poster']['name']);
 
 if (move_uploaded_file($poster_tmp, $folder . $poster_nama)) {
     $query = "INSERT INTO movies (judul, kategori, sinopsis, poster, rilis)
