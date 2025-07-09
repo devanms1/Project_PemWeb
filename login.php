@@ -13,13 +13,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     $q = $conn->query("SELECT * FROM users WHERE LOWER(email)='$email'");
-    if ($q && $q->num_rows == 1) {
+    if ($q && $q->num_rows === 1) {
         $user = $q->fetch_assoc();
-        if ($password == $user['password']) {
+
+        
+        if ($password === $user['password']) {
             $_SESSION['id_user'] = $user['id_user'];
             $_SESSION['nama'] = $user['nama'];
             $_SESSION['role'] = $user['role'];
-            header("Location: home.php");
+
+            if ($user['role'] === 'admin') {
+                header("Location: admin/home_admin.php");
+            } else {
+                header("Location: home.php");
+            }
             exit;
         } else {
             $_SESSION['flash_error'] = "Password salah.";
@@ -33,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
