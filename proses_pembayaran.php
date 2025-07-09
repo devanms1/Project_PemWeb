@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (move_uploaded_file($bukti['tmp_name'], $tujuan)) {
       // Simpan ke database
-      $stmt = $conn->prepare("INSERT INTO pembayaran (nama, metode, bukti) VALUES (?, ?, ?)");
+      $stmt = $conn->prepare("INSERT INTO tb_pembayaran (nama, metode, bukti) VALUES (?, ?, ?)");
       $stmt->bind_param("sss", $nama, $metode, $nama_file);
       $stmt->execute();
       $stmt->close();

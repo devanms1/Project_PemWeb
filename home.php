@@ -1,14 +1,3 @@
-<?php
-include 'koneksi.php';
-$result = $conn->query("SELECT * FROM products");
-while ($row = $result->fetch_assoc()) {
-  echo "<div>";
-  echo "<h3>" . $row['nama_produk'] . "</h3>";
-  echo "<p>Rp " . number_format($row['harga']) . "</p>";
-  echo "<img src='images/" . $row['gambar'] . "' width='150'>";
-  echo "</div>";
-}
-?>
 <!DOCTYPE html>
 <html lang="id">
 
@@ -20,8 +9,6 @@ while ($row = $result->fetch_assoc()) {
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" />
-
-<<<<<<< HEAD
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -34,19 +21,6 @@ while ($row = $result->fetch_assoc()) {
 </head>
 
 <body>
-  <?php
-  include 'koneksi.php';
-  $result = $conn->query("SELECT * FROM products");
-  while ($row = $result->fetch_assoc()) {
-    echo "<div>";
-    echo "<h3>" . $row['nama_produk'] . "</h3>";
-    echo "<p>Rp " . number_format($row['harga']) . "</p>";
-    echo "<img src='images/" . $row['gambar'] . "' width='150'>";
-    echo "</div>";
-  }
-  ?>
-
-
   <nav
     class="navbar navbar-expand-lg fixed-top shadow-lg"
     style="background-color: yellow">
