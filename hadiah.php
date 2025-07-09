@@ -68,18 +68,7 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data hadiah (bisa diganti dengan ambil dari DB)
-      $hadiahs = [
-        ["name" => "Tumbler Eksklusif", "price" => 25000, "img" => "./Assets/hadiah_tumbler.jpg"],
-        ["name" => "Poster Film", "price" => 10000, "img" => "./Assets/hadiah_poster.jpg"],
-        ["name" => "Gantungan Kunci Karakter", "price" => 7000, "img" => "./Assets/hadiah_gantungan.jpg"],
-        ["name" => "Kaos Nonton Skuy", "price" => 40000, "img" => "./Assets/hadiah_kaos.jpg"],
-        ["name" => "Notebook Premium", "price" => 30000, "img" => "./Assets/hadiah_notebook.jpg"],
-        ["name" => "Pin Karakter Lucu", "price" => 5000, "img" => "./Assets/hadiah_pin.jpg"],
-        ["name" => "Topi Edisi Terbatas", "price" => 35000, "img" => "./Assets/hadiah_topi.jpg"],
-        ["name" => "Stiker Seru", "price" => 3000, "img" => "./Assets/hadiah_stiker.jpg"]
-      ];
-
+     
       foreach ($hadiahs as $hadiah) {
         echo '
         <div class="col">

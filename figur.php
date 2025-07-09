@@ -68,17 +68,6 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data figur
-      $figurs = [
-        ["name" => "Figur Naruto", "price" => 85000, "img" => "./Assets/figur_naruto.jpg"],
-        ["name" => "Figur Luffy", "price" => 90000, "img" => "./Assets/figur_luffy.jpg"],
-        ["name" => "Figur Goku", "price" => 95000, "img" => "./Assets/figur_goku.jpg"],
-        ["name" => "Figur Spiderman", "price" => 100000, "img" => "./Assets/figur_spiderman.jpg"],
-        ["name" => "Figur Ironman", "price" => 110000, "img" => "./Assets/figur_ironman.jpg"],
-        ["name" => "Figur Deadpool", "price" => 95000, "img" => "./Assets/figur_deadpool.jpg"],
-        ["name" => "Figur Batman", "price" => 105000, "img" => "./Assets/figur_batman.jpg"],
-        ["name" => "Figur One Piece", "price" => 97000, "img" => "./Assets/figur_onepiece.jpg"]
-      ];
 
       foreach ($figurs as $figur) {
         echo '
