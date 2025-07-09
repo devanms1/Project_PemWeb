@@ -69,25 +69,25 @@
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
     // Koneksi ke database
-    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
     // Cek koneksi
     if ($koneksi->connect_error) {
       die("Koneksi gagal: " . $koneksi->connect_error);
     }
 
-    // Ambil data minuman dari database
-    $result = $koneksi->query("SELECT * FROM drinks ORDER BY id DESC");
+    // Ambil data dari tabel products dengan kategori 'drink'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'drink' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
     while ($drink = $result->fetch_assoc()) {
       echo '
       <div class="col">
         <div class="card drink-card text-center p-2">
-          <img src="'.$drink["image"].'" class="card-img-top drink-img" alt="'.$drink["name"].'" />
+          <img src="'.$drink["gambar"].'" class="card-img-top drink-img" alt="'.$drink["nama_produk"].'" />
           <div class="card-body">
-            <p class="drink-title">'.$drink["name"].'</p>
-            <p class="drink-price">Rp '.number_format($drink["price"], 0, ',', '.').'</p>
+            <p class="drink-title">'.$drink["nama_produk"].'</p>
+            <p class="drink-price">Rp '.number_format($drink["harga"], 0, ',', '.').'</p>
             <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
         </div>
