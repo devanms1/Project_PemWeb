@@ -1,15 +1,3 @@
-<?php
-  include 'koneksi.php';
-  $result = $conn->query("SELECT * FROM products");
-  while ($row = $result->fetch_assoc()) {
-      echo "<div>";
-      echo "<h3>" . $row['nama_produk'] . "</h3>";
-      echo "<p>Rp " . number_format($row['harga']) . "</p>";
-      echo "<img src='images/" . $row['gambar'] . "' width='150'>";
-      echo "</div>";
-  }
-?>
-
 <!DOCTYPE html>
 <html lang="id">
   <head>
@@ -35,19 +23,6 @@
     />
   </head>
   <body>
-  <?php
-        include 'koneksi.php';
-      $result = $conn->query("SELECT * FROM products");
-      while ($row = $result->fetch_assoc()) {
-          echo "<div>";
-          echo "<h3>" . $row['nama_produk'] . "</h3>";
-          echo "<p>Rp " . number_format($row['harga']) . "</p>";
-          echo "<img src='images/" . $row['gambar'] . "' width='150'>";
-          echo "</div>";
-      }
-      ?>
-
-
     <nav
       class="navbar navbar-expand-lg fixed-top shadow-lg"
       style="background-color: yellow"
