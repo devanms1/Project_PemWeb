@@ -68,29 +68,34 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-     
-      foreach ($hadiahs as $hadiah) {
-        echo '
-        <div class="col">
-          <div class="card hadiah-card text-center p-2">
-            <img src="'.$hadiah["img"].'" class="card-img-top hadiah-img" alt="'.$hadiah["name"].'" />
-            <div class="card-body">
-              <p class="hadiah-title">'.$hadiah["name"].'</p>
-              <p class="hadiah-price">Rp '.number_format($hadiah["price"], 0, ',', '.').'</p>
-              
-              <!-- Form Admin Order -->
-              <form action="pesan_hadiah.php" method="POST">
-                <input type="hidden" name="hadiah_name" value="'.$hadiah["name"].'">
-                <input type="hidden" name="hadiah_price" value="'.$hadiah["price"].'">
-                <div class="mb-2">
-                  <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
-                </div>
-                <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
-              </form>
-            </div>
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
+
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data dari tabel products dengan kategori 'hadiah'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'hadiah' ORDER BY id_product DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($hadiah = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card hadiah-card text-center p-2">
+          <img src="'.$hadiah["gambar"].'" class="card-img-top hadiah-img" alt="'.$hadiah["nama_produk"].'" />
+          <div class="card-body">
+            <p class="hadiah-title">'.$hadiah["nama_produk"].'</p>
+            <p class="hadiah-price">Rp '.number_format($hadiah["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>

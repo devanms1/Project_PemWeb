@@ -64,36 +64,41 @@
   <h2 class="fw-bold mb-4">Pilih Figur Favorit Kamu 🧸</h2>
 </div>
 
-<!-- Figur Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
-      foreach ($figurs as $figur) {
-        echo '
-        <div class="col">
-          <div class="card figur-card text-center p-2">
-            <img src="'.$figur["img"].'" class="card-img-top figur-img" alt="'.$figur["name"].'" />
-            <div class="card-body">
-              <p class="figur-title">'.$figur["name"].'</p>
-              <p class="figur-price">Rp '.number_format($figur["price"], 0, ',', '.').'</p>
-              
-              <!-- Form Admin Order -->
-              <form action="pesan_figur.php" method="POST">
-                <input type="hidden" name="figur_name" value="'.$figur["name"].'">
-                <input type="hidden" name="figur_price" value="'.$figur["price"].'">
-                <div class="mb-2">
-                  <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
-                </div>
-                <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
-              </form>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data dari tabel products dengan kategori 'figur'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'figur' ORDER BY id_product DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($figur = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card figur-card text-center p-2">
+          <img src="'.$figur["gambar"].'" class="card-img-top figur-img" alt="'.$figur["nama_produk"].'" />
+          <div class="card-body">
+            <p class="figur-title">'.$figur["nama_produk"].'</p>
+            <p class="figur-price">Rp '.number_format($figur["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="footer text-white py-4 shadow" style="background-color: yellow; color: black; margin-top: 5em;">

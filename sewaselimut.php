@@ -68,40 +68,34 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data selimut (bisa dari database)
-      $sewaselimuts = [
-        ["name" => "Selimut Polos", "price" => 15000, "img" => "./Assets/selimut_polos.jpg"],
-        ["name" => "Selimut Karakter", "price" => 18000, "img" => "./Assets/selimut_karakter.jpg"],
-        ["name" => "Selimut Tebal", "price" => 20000, "img" => "./Assets/selimut_tebal.jpg"],
-        ["name" => "Selimut Premium", "price" => 25000, "img" => "./Assets/selimut_premium.jpg"],
-        ["name" => "Selimut Couple", "price" => 30000, "img" => "./Assets/selimut_couple.jpg"],
-        ["name" => "Selimut Bayi", "price" => 10000, "img" => "./Assets/selimut_bayi.jpg"],
-        ["name" => "Selimut Travel", "price" => 16000, "img" => "./Assets/selimut_travel.jpg"],
-        ["name" => "Selimut Anti Dinginnya Mantan", "price" => 22000, "img" => "./Assets/selimut_anti_dingin.jpg"]
-      ];
+    // Koneksi ke database
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
-      foreach ($sewaselimuts as $selimut) {
-        echo '
-        <div class="col">
-          <div class="card sewaselimut-card text-center p-2">
-            <img src="'.$selimut["img"].'" class="card-img-top sewaselimut-img" alt="'.$selimut["name"].'" />
-            <div class="card-body">
-              <p class="sewaselimut-title">'.$selimut["name"].'</p>
-              <p class="sewaselimut-price">Rp '.number_format($selimut["price"], 0, ',', '.').'</p>
-              
-              <!-- Form Admin Order -->
-              <form action="pesan_selimut.php" method="POST">
-                <input type="hidden" name="selimut_name" value="'.$selimut["name"].'">
-                <input type="hidden" name="selimut_price" value="'.$selimut["price"].'">
-                <div class="mb-2">
-                  <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
-                </div>
-                <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
-              </form>
-            </div>
+    // Cek koneksi
+    if ($koneksi->connect_error) {
+      die("Koneksi gagal: " . $koneksi->connect_error);
+    }
+
+    // Ambil data dari tabel products dengan kategori 'sewaselimut'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewaselimut' ORDER BY id_product DESC");
+
+    // Tampilkan setiap produk sebagai kartu
+    while ($sewaselimut = $result->fetch_assoc()) {
+      echo '
+      <div class="col">
+        <div class="card sewaselimut-card text-center p-2">
+          <img src="'.$sewaselimut["gambar"].'" class="card-img-top sewaselimut-img" alt="'.$sewaselimut["nama_produk"].'" />
+          <div class="card-body">
+            <p class="sewaselimut-title">'.$sewaselimut["nama_produk"].'</p>
+            <p class="sewaselimut-price">Rp '.number_format($sewaselimut["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
-        </div>';
-      }
+        </div>
+      </div>';
+    }
+
+    // Tutup koneksi
+    $koneksi->close();
     ?>
   </div>
 </div>

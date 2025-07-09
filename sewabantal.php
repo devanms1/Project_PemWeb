@@ -69,36 +69,26 @@
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
     // Koneksi ke database
-    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
+    $koneksi = new mysqli("localhost", "root", "", "db_website");
 
     // Cek koneksi
     if ($koneksi->connect_error) {
       die("Koneksi gagal: " . $koneksi->connect_error);
     }
 
-    // Ambil data bantal dari database
-    $result = $koneksi->query("SELECT * FROM bantal ORDER BY id DESC");
+    // Ambil data dari tabel products dengan kategori 'sewabantal'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewabantal' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
-    while ($bantal = $result->fetch_assoc()) {
+    while ($sewabantal = $result->fetch_assoc()) {
       echo '
       <div class="col">
-        <div class="card bantal-card text-center p-2">
-          <img src="'.$bantal["image"].'" class="card-img-top bantal-img" alt="'.$bantal["name"].'" />
+        <div class="card sewabantal-card text-center p-2">
+          <img src="'.$sewabantal["gambar"].'" class="card-img-top sewabantal-img" alt="'.$sewabantal["nama_produk"].'" />
           <div class="card-body">
-            <p class="bantal-title">'.$bantal["name"].'</p>
-            <p class="bantal-price">Rp '.number_format($bantal["price"], 0, ',', '.').'</p>
-            
-            <!-- Form Pesan Admin -->
-            <form action="pesan_bantal.php" method="POST">
-              <input type="hidden" name="bantal_name" value="'.$bantal["name"].'">
-              <input type="hidden" name="bantal_price" value="'.$bantal["price"].'">
-              <div class="mb-2">
-                <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
-              </div>
-              <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
-            </form>
-
+            <p class="sewabantal-title">'.$sewabantal["nama_produk"].'</p>
+            <p class="sewabantal-price">Rp '.number_format($sewabantal["harga"], 0, ',', '.').'</p>
+            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
         </div>
       </div>';
