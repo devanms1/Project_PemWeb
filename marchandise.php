@@ -73,7 +73,7 @@
     <!-- Cpontent -->
     <div class="row row-cols-1 row-cols-md-4 g-4 d-flex row-space-around">
       <div class="col">
-        <a href="">
+        <a href="drink.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Drink</div>
             <img src="./Assets/Drink.jpg" class="card-img-top" alt="Minuman" />
@@ -81,7 +81,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="snack.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Snack</div>
             <img src="./Assets/Snack.jpg" class="card-img-top" alt="Snack" />
@@ -89,7 +89,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="keychan.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Keychan</div>
             <img
@@ -101,7 +101,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="poster_film.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Poster Film</div>
             <img
