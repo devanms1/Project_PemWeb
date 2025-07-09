@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Figur Order</title>
+  <title>Pesan Figur</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./Style/style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -68,16 +68,16 @@
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-      // Simulasi data figur (bisa diganti dari database)
+      // Simulasi data figur
       $figurs = [
-        ["name" => "Figur Naruto", "price" => 75000, "img" => "./Assets/figur_naruto.jpg"],
-        ["name" => "Figur One Piece", "price" => 85000, "img" => "./Assets/figur_onepiece.jpg"],
+        ["name" => "Figur Naruto", "price" => 85000, "img" => "./Assets/figur_naruto.jpg"],
+        ["name" => "Figur Luffy", "price" => 90000, "img" => "./Assets/figur_luffy.jpg"],
         ["name" => "Figur Goku", "price" => 95000, "img" => "./Assets/figur_goku.jpg"],
-        ["name" => "Figur Spiderman", "price" => 90000, "img" => "./Assets/figur_spiderman.jpg"],
-        ["name" => "Figur Batman", "price" => 100000, "img" => "./Assets/figur_batman.jpg"],
-        ["name" => "Figur Iron Man", "price" => 120000, "img" => "./Assets/figur_ironman.jpg"],
-        ["name" => "Figur Luffy", "price" => 95000, "img" => "./Assets/figur_luffy.jpg"],
-        ["name" => "Figur Deadpool", "price" => 110000, "img" => "./Assets/figur_deadpool.jpg"]
+        ["name" => "Figur Spiderman", "price" => 100000, "img" => "./Assets/figur_spiderman.jpg"],
+        ["name" => "Figur Ironman", "price" => 110000, "img" => "./Assets/figur_ironman.jpg"],
+        ["name" => "Figur Deadpool", "price" => 95000, "img" => "./Assets/figur_deadpool.jpg"],
+        ["name" => "Figur Batman", "price" => 105000, "img" => "./Assets/figur_batman.jpg"],
+        ["name" => "Figur One Piece", "price" => 97000, "img" => "./Assets/figur_onepiece.jpg"]
       ];
 
       foreach ($figurs as $figur) {
@@ -88,7 +88,16 @@
             <div class="card-body">
               <p class="figur-title">'.$figur["name"].'</p>
               <p class="figur-price">Rp '.number_format($figur["price"], 0, ',', '.').'</p>
-              <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
+              
+              <!-- Form Admin Order -->
+              <form action="pesan_figur.php" method="POST">
+                <input type="hidden" name="figur_name" value="'.$figur["name"].'">
+                <input type="hidden" name="figur_price" value="'.$figur["price"].'">
+                <div class="mb-2">
+                  <input type="number" name="quantity" class="form-control form-control-sm" min="1" placeholder="Jumlah" required>
+                </div>
+                <button type="submit" class="btn btn-warning btn-sm w-100">Pesan (Admin)</button>
+              </form>
             </div>
           </div>
         </div>';
@@ -114,7 +123,7 @@
       <a href="#" class="text-orange mx-2">All Movies</a>
     </div>
     <p class="text-muted small mb-0">
-      Nonton Skuy hadir sebagai solusi praktis dan cepat bagi kamu yang ingin menemukan film favorit tanpa ribet — cukup satu klik, dan seluruh pilihan tayangan terbaik langsung tersedia di genggamanmu.
+      Koleksi figurin kece buat nambah vibes nonton dan koleksimu! Langsung pilih dan pesan 🧸✨
     </p>
   </div>
 </footer>
