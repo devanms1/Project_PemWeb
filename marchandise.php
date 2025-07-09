@@ -113,7 +113,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="hadiah.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Hadiah</div>
             <img src="./Assets/kadp.jpg" class="card-img-top" alt="Kado" />
@@ -121,7 +121,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="figur.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Figure</div>
             <img src="./Assets/Figure.jpeg" class="card-img-top" alt="Figure" />
