@@ -69,7 +69,7 @@
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
     // Koneksi ke database
-    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
+    $koneksi = new mysqli("localhost", "root", "", "db_wabsite");
 
     // Cek koneksi
     if ($koneksi->connect_error) {
