@@ -129,7 +129,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="sewabantal.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Sewa Bantal</div>
             <img src="./Assets/miaw.png" class="card-img-top" alt="Bantal" />
@@ -137,7 +137,7 @@
         </a>
       </div>
       <div class="col">
-        <a href="">
+        <a href="sewaselimut.php">
           <div class="card card-custom text-center">
             <div class="card-overlay">Sewa Selimut</div>
             <img
