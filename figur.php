@@ -81,18 +81,20 @@
 
     // Tampilkan setiap produk sebagai kartu
     while ($figur = $result->fetch_assoc()) {
-      echo '
-      <div class="col">
-        <div class="card figur-card text-center p-2">
-          <img src="'.$figur["gambar"].'" class="card-img-top figur-img" alt="'.$figur["nama_produk"].'" />
-          <div class="card-body">
-            <p class="figur-title">'.$figur["nama_produk"].'</p>
-            <p class="figur-price">Rp '.number_format($figur["harga"], 0, ',', '.').'</p>
-            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
-          </div>
-        </div>
-      </div>';
-    }
+  echo '
+  <div class="col">
+    <div class="card figur-card text-center p-2">
+      <img src="'.$figur["gambar"].'" class="card-img-top figur-img" alt="'.$figur["nama_produk"].'" />
+      <div class="card-body">
+        <p class="figur-title mb-1">'.$figur["nama_produk"].'</p>
+        <p class="text-muted small">'.$figur["kategori"].' | Stok: '.$figur["stok"].'</p>
+        <p class="figur-price">Rp '.number_format($figur["harga"], 0, ',', '.').'</p>
+        <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
+      </div>
+    </div>
+  </div>';
+}
+
 
     // Tutup koneksi
     $koneksi->close();
