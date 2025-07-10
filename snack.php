@@ -88,7 +88,7 @@
           <div class="card-body">
             <p class="snack-title">'.$snack["nama_produk"].'</p>
             <p class="snack-price">Rp '.number_format($snack["harga"], 0, ',', '.').'</p>
-            <a href="#" class="btn btn-warning btn-sm w-100">Pesan</a>
+            <a href="/detai_checkout" class="btn btn-warning btn-sm w-100">Pesan</a>
           </div>
         </div>
       </div>';

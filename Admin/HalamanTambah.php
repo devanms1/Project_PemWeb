@@ -44,16 +44,13 @@
                 id="navbarNavDropdown">
                 <ul class="navbar-nav gap-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+                        <a class="nav-link" href="../Admin/home_admin.php">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="tayang.html">Tambah Film</a>
+                        <a class="nav-link" href="../Admin/drink_admin.php">Tambah Snack</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./populer.html">Tambah Snack</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="marchandise.html">Pantau User</a>
+                        <a class="nav-link" href="../Admin/RiwayatTransaksi.php">Pantau User</a>
                     </li>
                 </ul>
             </div>
