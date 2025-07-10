@@ -1,13 +1,13 @@
 <?php
 $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
 if ($koneksi->connect_error) {
-    die("Koneksi gagal: " . $koneksi->connect_error);
+  die("Koneksi gagal: " . $koneksi->connect_error);
 }
 
 $id = isset($_GET['id']) && is_numeric($_GET['id']) ? intval($_GET['id']) : 0;
 if ($id === 0) {
-    echo "<script>alert('ID film tidak valid!');window.location.href='tayang.php';</script>";
-    exit;
+  echo "<script>alert('ID film tidak valid!');window.location.href='tayang.php';</script>";
+  exit;
 }
 
 $query = "SELECT m.*, GROUP_CONCAT(j.jam SEPARATOR ',') AS jam_tayang 
@@ -20,18 +20,30 @@ $result = $koneksi->query($query);
 $data = $result->fetch_assoc();
 
 if (!$data) {
-    echo "<script>alert('Film tidak ditemukan!');window.location.href='tayang.php';</script>";
-    exit;
+  echo "<script>alert('Film tidak ditemukan!');window.location.href='tayang.php';</script>";
+  exit;
 }
 ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?php echo htmlspecialchars($data['judul']); ?> - Detail Film</title>
-  <link rel="stylesheet" href="./Style/page-jumbo.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link rel="stylesheet" href="/Style/home.css" /> -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+
+  <link
+    href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    rel="stylesheet" />
   <style>
     .btn-jam {
       background-color: transparent;
@@ -42,9 +54,11 @@ if (!$data) {
       border-radius: 8px;
       transition: 0.3s;
     }
+
     .btn-jam:hover {
       background-color: #ffd600;
     }
+
     .btn-beli {
       background-color: #ffd600;
       color: #000;
@@ -56,6 +70,7 @@ if (!$data) {
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
+
     .btn-beli:hover {
       background-color: #ffca28;
       transform: scale(1.05);
@@ -63,20 +78,47 @@ if (!$data) {
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <div class="navbar bg-warning p-3 d-flex justify-content-between align-items-center">
-      <h2 class="m-0">🎬 Nonton Skuy</h2>
-      <nav>
-        <ul class="d-flex list-unstyled gap-4 m-0">
-          <li><a href="home.php" class="text-dark fw-bold text-decoration-none">Home</a></li>
-          <li><a href="tayang.php" class="text-dark text-decoration-none">Jadwal Film</a></li>
-          <li><a href="populer.php" class="text-dark text-decoration-none">Populer</a></li>
-          <li><a href="marchandise.php" class="text-dark text-decoration-none">Merchandise</a></li>
+  <nav
+    class="navbar navbar-expand-lg fixed-top shadow-lg"
+    style="background-color: yellow">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold m-3" href="#">Nonton Skuy</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div
+        class="collapse navbar-collapse justify-content-end"
+        id="navbarNavDropdown">
+        <ul class="navbar gap-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tayang.php">Sedang Tayang</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./populer.php">Popular</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./checkout.php">Checkout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="marchandise.php">Merchandise</a>
+          </li>
         </ul>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <div class="container py-5">
     <h1 class="text-center mb-4"><?php echo strtoupper(htmlspecialchars($data['judul'])); ?></h1>
@@ -105,13 +147,14 @@ if (!$data) {
       <h2 class="mb-4">Jam Tayang</h2>
       <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
         <?php
-          $jamList = explode(',', $data['jam_tayang']);
-          foreach ($jamList as $jam) {
-              echo "<button class='btn btn-jam'>" . trim($jam) . "</button>";
-          }
+        $jamList = explode(',', $data['jam_tayang']);
+        foreach ($jamList as $jam) {
+          echo "<button class='btn btn-jam'>" . trim($jam) . "</button>";
+        }
         ?>
       </div>
-      <a href="#" class="btn btn-beli">Beli Tiket</a>
+      <a href="checkout.php?id=<?php echo $data['id_movie']; ?>" class="btn btn-beli">Beli Tiket</a>
+
     </div>
   </div>
 
@@ -124,4 +167,5 @@ if (!$data) {
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -1,12 +1,19 @@
 <?php
 session_start();
 include 'koneksi.php';
-$id = $_POST['id'] ?? null;
+// $id = $_POST['id'] ?? null;
 $nama   = $_POST['nama'];
 $email  = $_POST['email'];
 $film   = $_POST['film'];
-$tanggal = (int)$_POST['tanggal'];
-$jumlah = $_POST['jumlah'];
+// $tanggal = (int)$_POST['tanggal'];
+$jadwal = $_POST['jadwal'];
+$jumlah = (int) ($_POST['jumlah']);
+
+
+// Validasi sederhana
+if ($nama === '' || $email === '' || $film === '' || $jadwal === '' || $jumlah <= 0) {
+  die("Data tidak lengkap!");
+}
 
 // Optional: Hitung total harga (misalnya 1 tiket = 35000)
 $harga_per_tiket = 35000;
@@ -16,6 +23,7 @@ $total = $jumlah * $harga_per_tiket;
 $query = "INSERT INTO checkout (nama, email, film, tanggal, jumlah, total) 
           VALUES ('$nama', '$email', '$film', '$tanggal', '$jumlah', '$total')";
 
+if ($conn->query($query)) {
 $_SESSION['checkout'] = [
   'id' => $conn->insert_id, // Ambil ID terakhir yang dimasukkan
   'nama' => $nama,
@@ -27,9 +35,6 @@ $_SESSION['checkout'] = [
 
 header('Location: detail_checkout.php');
 exit;
-
-if ($conn->query($query)) {
-  echo "<script>alert('Pesanan berhasil!'); window.location.href='detail_checkout.php';</script>";
 } else {
-  echo "Gagal menyimpan: " . $conn->error;
+  echo("Gagal Menyimpan: " . $conn->error);
 }
