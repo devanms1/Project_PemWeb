@@ -84,7 +84,7 @@
       echo '
       <div class="col">
         <div class="card keychan-card text-center p-2">
-          <img src="'.$keychan["gambar"].'" class="card-img-top keychan-img" alt="'.$keychan["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($keychan["gambar"]).'" class="card-img-top keychan-img" alt="'.htmlspecialchars($keychan["nama_produk"]).'" />
           <div class="card-body">
             <p class="keychan-title">'.$keychan["nama_produk"].'</p>
             <p class="keychan-price">Rp '.number_format($keychan["harga"], 0, ',', '.').'</p>

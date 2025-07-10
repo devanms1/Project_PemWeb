@@ -84,7 +84,7 @@
       echo '
       <div class="col">
         <div class="card hadiah-card text-center p-2">
-          <img src="'.$hadiah["gambar"].'" class="card-img-top hadiah-img" alt="'.$hadiah["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($hadiah["gambar"]).'" class="card-img-top hadiah-img" alt="'.htmlspecialchars($hadiah["nama_produk"]).'" />
           <div class="card-body">
             <p class="hadiah-title">'.$hadiah["nama_produk"].'</p>
             <p class="hadiah-price">Rp '.number_format($hadiah["harga"], 0, ',', '.').'</p>

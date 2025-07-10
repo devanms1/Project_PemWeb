@@ -14,29 +14,30 @@
       font-family: 'Poppins', sans-serif;
       background-color: #f5f5f5;
     }
-    .bantal-card {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      background: white;
-      transition: 0.3s ease-in-out;
-    }
-    .bantal-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
-    .bantal-img {
-      height: 180px;
-      object-fit: cover;
-    }
-    .bantal-title {
-      font-size: 1.1em;
-      font-weight: 600;
-    }
-    .bantal-price {
-      font-weight: bold;
-      color: #ff5722;
-    }
+    .sewabantal-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: white;
+  transition: 0.3s ease-in-out;
+}
+.sewabantal-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+.sewabantal-img {
+  height: 180px;
+  object-fit: cover;
+}
+.sewabantal-title {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+.sewabantal-price {
+  font-weight: bold;
+  color: #ff5722;
+}
+
   </style>
 </head>
 <body>
@@ -60,11 +61,12 @@
 </nav>
 
 <!-- Title -->
+<!-- Title -->
 <div class="container text-center" style="margin-top: 7em;">
-  <h2 class="fw-bold mb-4">Sewa Bantal Nyaman Untuk Nonton 🎥🛏️</h2>
+  <h2 class="fw-bold mb-4">Sewa Bantal Empuk Biar Nonton Makin Nyenyak 😴🛌</h2>
 </div>
 
-<!-- Bantal Cards -->
+<!-- Sewabantal Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
@@ -76,15 +78,15 @@
       die("Koneksi gagal: " . $koneksi->connect_error);
     }
 
-    // Ambil data dari tabel products dengan kategori 'sewabantal'
-    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewabantal' ORDER BY id_product DESC");
+    // Ambil data dari tabel products dengan kategori 'sewa_bantal'
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewa_bantal' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
     while ($sewabantal = $result->fetch_assoc()) {
       echo '
       <div class="col">
         <div class="card sewabantal-card text-center p-2">
-          <img src="'.$sewabantal["gambar"].'" class="card-img-top sewabantal-img" alt="'.$sewabantal["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($sewabantal["gambar"]).'" class="card-img-top sewabantal-img" alt="'.htmlspecialchars($sewabantal["nama_produk"]).'" />
           <div class="card-body">
             <p class="sewabantal-title">'.$sewabantal["nama_produk"].'</p>
             <p class="sewabantal-price">Rp '.number_format($sewabantal["harga"], 0, ',', '.').'</p>
@@ -99,6 +101,7 @@
     ?>
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="footer text-white py-4 shadow" style="background-color: yellow; color: black; margin-top: 5em;">
