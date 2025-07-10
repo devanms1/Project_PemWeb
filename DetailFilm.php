@@ -31,7 +31,7 @@ if (!$data) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?php echo htmlspecialchars($data['judul']); ?> - Detail Film</title>
-  <!-- <link rel="stylesheet" href="/Style/home.css" /> -->
+  <link rel="stylesheet" href="/Style/home.css" />
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
     rel="stylesheet" />
@@ -80,41 +80,18 @@ if (!$data) {
 </head>
 
 <body>
-  <nav
-    class="navbar navbar-expand-lg fixed-top shadow-lg"
-    style="background-color: yellow">
+  <nav class="navbar navbar-expand-lg fixed-top shadow-lg" style="background-color: yellow">
     <div class="container-fluid">
       <a class="navbar-brand fw-bold m-3" href="#">Nonton Skuy</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
         <span class="navbar-toggler-icon"></span>
       </button>
-
-      <div
-        class="collapse navbar-collapse justify-content-end"
-        id="navbarNavDropdown">
-        <ul class="navbar gap-3">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="tayang.php">Sedang Tayang</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./populer.php">Popular</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./checkout.php">Checkout</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="marchandise.php">Merchandise</a>
-          </li>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+        <ul class="navbar-nav gap-3">
+          <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="tayang.php">Sedang Tayang</a></li>
+          <li class="nav-item"><a class="nav-link" href="populer.php">Popular</a></li>
+          <li class="nav-item"><a class="nav-link" href="marchandise.php">Merchandise</a></li>
         </ul>
       </div>
     </div>
@@ -124,7 +101,10 @@ if (!$data) {
     <h1 class="text-center mb-4"><?php echo strtoupper(htmlspecialchars($data['judul'])); ?></h1>
     <div class="row">
       <div class="col-md-5">
-        <img src="uploads/<?php echo htmlspecialchars($data['poster']); ?>" alt="Poster <?php echo htmlspecialchars($data['judul']); ?>" class="img-fluid rounded shadow" />
+        <img src="admin/uploads/<?php echo htmlspecialchars($data['poster']); ?>"
+          alt="Poster <?php echo htmlspecialchars($data['judul']); ?>"
+          class="img-fluid rounded shadow" />
+
       </div>
       <div class="col-md-7">
         <h3>Detail Film</h3>
