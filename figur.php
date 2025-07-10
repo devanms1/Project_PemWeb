@@ -64,6 +64,7 @@
   <h2 class="fw-bold mb-4">Pilih Figur Favorit Kamu 🧸</h2>
 </div>
 
+<!-- Figur Cards -->
 <div class="container">
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
@@ -98,7 +99,6 @@
     ?>
   </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="footer text-white py-4 shadow" style="background-color: yellow; color: black; margin-top: 5em;">
