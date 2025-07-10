@@ -167,7 +167,7 @@
     </div>
   </div>
   <div class="button">
-    <a href="./tayang.html">
+    <a href="tayang.php">
       <button
         type="button"
         class="btn btn-primary btn-lg gap-2 d-flex mx-auto mt-5">

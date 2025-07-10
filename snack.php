@@ -84,7 +84,7 @@
       echo '
       <div class="col">
         <div class="card snack-card text-center p-2">
-          <img src="'.$snack["gambar"].'" class="card-img-top snack-img" alt="'.$snack["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($snack["gambar"]).'" class="card-img-top snack-img" alt="'.htmlspecialchars($snack["nama_produk"]).'" />
           <div class="card-body">
             <p class="snack-title">'.$snack["nama_produk"].'</p>
             <p class="snack-price">Rp '.number_format($snack["harga"], 0, ',', '.').'</p>

@@ -69,7 +69,7 @@
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
     // Koneksi ke database
-    $koneksi = new mysqli("localhost", "root", "", "db_website");
+    $koneksi = new mysqli("localhost", "root", "", "db_bioskop");
 
     // Cek koneksi
     if ($koneksi->connect_error) {
@@ -84,7 +84,7 @@
       echo '
       <div class="col">
         <div class="card poster_film-card text-center p-2">
-          <img src="'.$poster_film["gambar"].'" class="card-img-top poster_film-img" alt="'.$poster_film["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($poster_film["gambar"]).'" class="card-img-top poster_$poster_film-img" alt="'.htmlspecialchars($poster_film["nama_produk"]).'" />
           <div class="card-body">
             <p class="poster_film-title">'.$poster_film["nama_produk"].'</p>
             <p class="poster_film-price">Rp '.number_format($poster_film["harga"], 0, ',', '.').'</p>

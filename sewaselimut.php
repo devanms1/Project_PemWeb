@@ -77,14 +77,14 @@
     }
 
     // Ambil data dari tabel products dengan kategori 'sewaselimut'
-    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewaselimut' ORDER BY id_product DESC");
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'sewa_selimut' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
     while ($sewaselimut = $result->fetch_assoc()) {
       echo '
       <div class="col">
         <div class="card sewaselimut-card text-center p-2">
-          <img src="'.$sewaselimut["gambar"].'" class="card-img-top sewaselimut-img" alt="'.$sewaselimut["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($sewaselimut["gambar"]).'" class="card-img-top sew$sewaselimut-img" alt="'.htmlspecialchars($sewaselimut["nama_produk"]).'" />
           <div class="card-body">
             <p class="sewaselimut-title">'.$sewaselimut["nama_produk"].'</p>
             <p class="sewaselimut-price">Rp '.number_format($sewaselimut["harga"], 0, ',', '.').'</p>

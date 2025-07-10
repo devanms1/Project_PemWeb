@@ -77,14 +77,14 @@
     }
 
     // Ambil data dari tabel products dengan kategori 'figur'
-    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'figur' ORDER BY id_product DESC");
+    $result = $koneksi->query("SELECT * FROM products WHERE kategori = 'figure' ORDER BY id_product DESC");
 
     // Tampilkan setiap produk sebagai kartu
     while ($figur = $result->fetch_assoc()) {
       echo '
       <div class="col">
         <div class="card figur-card text-center p-2">
-          <img src="'.$figur["gambar"].'" class="card-img-top figur-img" alt="'.$figur["nama_produk"].'" />
+          <img src="admin/'.htmlspecialchars($figur["gambar"]).'" class="card-img-top figur-img" alt="'.htmlspecialchars($figur["nama_produk"]).'" />
           <div class="card-body">
             <p class="figur-title">'.$figur["nama_produk"].'</p>
             <p class="figur-price">Rp '.number_format($figur["harga"], 0, ',', '.').'</p>
